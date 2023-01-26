@@ -1,0 +1,35 @@
+# Import necessary libraries
+from bokeh.plotting import figure, show
+from bokeh.models import ColumnDataSource, CategoricalColorMapper, HoverTool
+
+# Load data into a ColumnDataSource
+data = {'fruits': ['Apples', 'Pears', 'Nectarines', 'Plums', 'Grapes', 'Strawberries'],
+        '2015': [2, 1, 4, 3, 2, 4],
+        '2016': [5, 3, 3, 2, 4, 6],
+        '2017': [3, 2, 4, 4, 5, 3]}
+source = ColumnDataSource(data=data)
+
+# Create a figure and plot
+fruits = data['fruits']
+plot = figure(x_range=fruits, height=250, title="Fruit Counts by Year",
+              toolbar_location=None, tools="")
+
+# Use the vbar_stack() function to create the stacked bar chart
+plot.vbar_stack(stackers=['2015', '2016', '2017'], x='fruits', width=0.9, source=source,
+                color=['#2b83ba', '#abdda4', '#ffffbf'])
+
+# Add a hover tool to display data when hovering over the bars
+hover = HoverTool(tooltips=[('Fruit', '@fruits'),
+                            ('2015', '@2015'),
+                            ('2016', '@2016'),
+                            ('2017', '@2017')])
+plot.add_tools(hover)
+
+# Add a legend
+plot.legend.title = "Year"
+plot.legend.title_text_font_size = "12pt"
+plot.legend.label_text_font_size = "10pt"
+
+# Show the plot
+show(plot)
+image.png

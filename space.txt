@@ -1,0 +1,66 @@
+import pygame
+
+# Initialize pygame
+pygame.init()
+
+# Set the window size
+window_size = (800, 600)
+
+# Create the window
+screen = pygame.display.set_mode(window_size)
+
+# Set the title
+pygame.display.set_caption("Space Invaders")
+
+# Load the player image
+player_image = pygame.image.load("player.png")
+
+# Set the player's starting position
+player_x = 400
+player_y = 550
+
+# Load the enemy image
+enemy_image = pygame.image.load("enemy.png")
+
+# Set the enemy's starting position
+enemy_x = 50
+enemy_y = 50
+
+# Set the enemy's movement speed
+enemy_speed = 5
+
+# Set the game loop to run at 60 FPS
+clock = pygame.time.Clock()
+
+# Run the game loop
+running = True
+while running:
+    # Handle events
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+    
+    # Move the enemy
+    enemy_x += enemy_speed
+    
+    # Reverse the enemy's direction if it hits the edge of the screen
+    if enemy_x > 750 or enemy_x < 0:
+        enemy_speed *= -1
+    
+    # Clear the screen
+    screen.fill((0, 0, 0))
+    
+    # Draw the player
+    screen.blit(player_image, (player_x, player_y))
+    
+    # Draw the enemy
+    screen.blit(enemy_image, (enemy_x, enemy_y))
+    
+    # Update the display
+    pygame.display.flip()
+    
+    # Limit the game loop to 60 FPS
+    clock.tick(60)
+
+# Quit pygame
+pygame.quit()

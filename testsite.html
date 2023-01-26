@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Robotics and Control Simulations</title>
+        <link rel="stylesheet" href="style.css">
+      </head>
+<body>
+  <header>
+    <h1>Robotics and Control Simulations</h1>
+  </header>
+  <nav>
+    <ul>
+        <button id="toggle-nav">Menu</button>
+
+        <script>
+          const toggleNavButton = document.getElementById("toggle-nav");
+          const nav = document.querySelector("nav");
+        
+          toggleNavButton.addEventListener("click", () => {
+            nav.classList.toggle("visible");
+          });
+        </script>
+        
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <main>
+    <section id="projects">
+      <h2>Projects</h2>
+      <ul>
+        <li><a href="#" id="project-1">Project 1</a></li>
+        <li><a href="#" id="project-2">Project 2</a></li>
+        <li><a href="#" id="project-3">Project 3</a></li>
+      </ul>
+      
+      <div id="project-info">
+        <!-- Add information about the selected project here -->
+      </div>
+      
+      <script>
+        const projectLinks = document.querySelectorAll("ul a");
+        const projectInfo = document.getElementById("project-info");
+      
+        projectLinks.forEach((link) => {
+          link.addEventListener("click", (event) => {
+            event.preventDefault();
+            // Load project information for the clicked link
+            const projectId = event.target.id;
+            const projectData = getProjectData(projectId);
+            // Update the project info div with the new data
+            projectInfo.innerHTML = projectData;
+          });
+        });
+      </script>
+      
+      These are just a few examples of the types of interactivity you can add to your website with JavaScript. You can use a variety of techniques and libraries to create a more dynamic and interactive experience for your users.
+      
+    </section>
+    <section id="about">
+      <h2>About</h2>
+      <!-- Add information about yourself and your background in robotics and control simulations -->
+    </section>
+    <section id="contact">
+      <h2>Contact</h2>
+      <!-- Add contact information, such as your email or social media links -->
+    </section>
+  </main>
+  <footer>
+    <!-- Add copyright information or additional links -->
+  </footer>
+</body>
+</html>
